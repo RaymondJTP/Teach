@@ -52,6 +52,10 @@ class Controller{
                 const isValid = password == user.password
 
                 if(isValid){
+                    req.session.user = {
+                        name: username,
+                        role: "Teacher"
+                    }
                     return res.redirect('/')
                 }else{
                     let error = 'invalid username/password'
@@ -70,7 +74,7 @@ class Controller{
     static loginPostStudent(req,res){
         // console.log(req.body);
         let{username, password} = req.body
-        Teacher.findOne({
+        Student.findOne({
             where:{username:username}
         })
         .then(user => {
@@ -78,6 +82,10 @@ class Controller{
                 const isValid = bcrypt.compareSync(password, user.password);
 
                 if(isValid){
+                    req.session.user = {
+                        name: username,
+                        role: "Student"
+                    }
                     return res.redirect('/')
                 }else{
                     let error = 'invalid username/password'
@@ -92,6 +100,10 @@ class Controller{
             res.send(err)
         })
 
+    }
+
+    static listTask(req,res){
+        res.render('landingpagestudent')
     }
 
     static listCategory(req,res){

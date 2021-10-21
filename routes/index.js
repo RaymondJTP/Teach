@@ -1,22 +1,39 @@
 const express = require('express')
 const router = express.Router()
 const Controller = require('../controllers/controller')
+const {middlewareTeacher, middlewareStudent, middlewareUser} = require('../middleware/userValidation')
 
-router.get('/', Controller.home )
-router.get('/register', Controller.register)
-router.post('/register', Controller.registerPost)
-router.get('/login', Controller.login)
-router.get('/loginteacher', Controller.loginTeacher)
-router.post('/loginteacher', Controller.loginPostTeacher)
-router.get('/loginstudent', Controller.loginStudent)
-router.post('/loginstudent', Controller.loginPostStudent)
-router.get('/category', Controller.listCategory)
-router.get('/category/:categoryId', Controller.categoryDetail)
-router.get('/category/:categoryId/add', Controller.addExercise)
-router.post('/category/:categoryId/add', Controller.addPostExercise)
-router.get('/category/:categoryId/exercise/:ExerciseId/delete', Controller.deleteExercise)
-router.get('/category/:categoryId/exercise/:ExerciseId/edit', Controller.editExercise)
-router.post('/category/:categoryId/exercise/:ExerciseId/edit', Controller.editExercisePost)
+
+// router.use(middleware)
+
+
+router.get('/', middlewareUser,  Controller.home )
+router.get('/login', middlewareUser, Controller.login)
+router.get('/register', middlewareUser, Controller.register)
+router.post('/register', middlewareUser, Controller.registerPost)
+router.get('/loginstudent', middlewareUser, Controller.loginStudent)
+router.post('/loginstudent', middlewareUser, Controller.loginPostStudent)
+router.get('/loginteacher', middlewareUser, Controller.loginTeacher)
+router.post('/loginteacher', middlewareUser, Controller.loginPostTeacher)
+
+
+router.get('/category', middlewareTeacher, Controller.listCategory)
+router.get('/category/:categoryId', middlewareTeacher, Controller.categoryDetail)
+router.get('/category/:categoryId/add', middlewareTeacher, Controller.addExercise)
+router.post('/category/:categoryId/add', middlewareTeacher, Controller.addPostExercise)
+router.get('/category/:categoryId/exercise/:ExerciseId/delete', middlewareTeacher, Controller.deleteExercise)
+router.get('/category/:categoryId/exercise/:ExerciseId/edit', middlewareTeacher, Controller.editExercise)
+router.post('/category/:categoryId/exercise/:ExerciseId/edit', middlewareTeacher, Controller.editExercisePost)
+
+
+
+
+router.get('/taskStudent', middlewareStudent, Controller.listTask)
+
+router.get('/logout',(req,res)=>{
+    req.session.destroy(()=>{res.redirect('/')})
+})
+
 
 
 
