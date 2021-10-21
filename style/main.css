@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    line-height: 1.5;
+}
+
+/* body {
+    background: url(/resource/bg10.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+} */
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url(TAMBAH-GAMBAR) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+section.page-Teach,
+section.page-home {
+    background: url(TAMBAH-GAMBAR); background-size: cover; background-position: center;
+}
+
+section.page-contact,
+section.page-age,
+section.page-select-location {
+    background: url(TAMBAH-GAMBAR); background-size: cover; background-position: center;
+}
+
+header {
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 30px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Fredoka One', sans-serif;
+}
+
+header .logo {
+    position: relative;
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header .navigation a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+
+.page-header .navigation a {
+    background: lavender;
+    color: #000;
+}
+
+.color {
+    color: lavender;
+}
+
+header .navigation a:hover:not(.active) {
+    background: lavender;
+    color: rgb(153, 51, 65);
+}
+
+.active {
+    background: lavender;
+}
+
+.content {
+    max-width: 650px;
+    margin-top: 60px;
+    margin-left: 10%;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.content h1 {
+    font-size: 2rem;
+    margin-bottom: 2em;
+}
+
+.info {
+    margin-top: 48px;
+}
+.info a {
+    color: rgb(153, 51, 65);
+    text-decoration: none;
+    transition: 0.3s;
+    transition-property: color;
+}
+
+.info .interactive-btn {
+    display: inline-block;
+    background: red;
+    padding: 1em 2em;
+    border-radius: 8px;
+    background-color: #8fd4b7;
+    color: white;
+}
+
+.info .interactive-btn:first-child {
+    margin-right: 16px;
+}
+
+.info a:hover:not(.active) {
+    color: grey;
+}
+
+.info input[type=submit] {
+    background-color: #8fd4b7;
+    padding: 1em 2em;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: rgb(153, 51, 65);
+}
+
+/* .box {
+    color: rgb(153, 51, 65);
+} */
+
+.next {
+    margin-top: 150px;
+    margin-left: 790px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+
+.next a {
+    font-family: 'Fredoka One', sans-serif;
+}
