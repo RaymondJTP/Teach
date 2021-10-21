@@ -17,9 +17,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Teacher.init({
-    name: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Name cannot be empty'
+        }
+      }
+    },
+    username: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Username cannot be empty'
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Password cannot be empty'
+        }
+      }
+    },
   }, {
     hooks: {
       beforeCreate(instance,options){

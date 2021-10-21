@@ -16,10 +16,38 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Exercise.init({
-    question: DataTypes.TEXT,
-    answer: DataTypes.STRING,
-    answer2: DataTypes.STRING,
-    answer3: DataTypes.STRING,
+    question: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: {
+          msg: 'question cannot be empty'
+        }
+      }
+    },
+    answer: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'answer cannot be empty'
+        }
+      }
+    },
+    answer2: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'answer2 cannot be empty'
+        }
+      }
+    },
+    answer3: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'answer2 cannot be empty'
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Exercise',
