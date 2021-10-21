@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/category">Exercise's Categories</a>
+
+    <h1><%= data.type %>  Detail</h1>
+    <a href="/category/<%= data.id %> /add">Add Exercise For This Category!</a>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Soal</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.Exercises.forEach((el,idx) => { %>
+                <tr>
+                    <td><%= idx+1 %>.</td>
+                    <td><%= el.question %> </td>
+                    <td>
+                        <a href="/category/<%= data.id %> /exercise/<%= el.id %>/edit">Update</a>
+                        <a href="/category/<%= data.id %> /exercise/<%= el.id %>/delete">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/category">Exercise's Categories</a>
+    <h1>Form Add Exercise</h1>
+
+    <form action="/category/<%= data.id %> /add" method="post">
+        <label for="">Input soal</label> <br>
+        <input type="text"  name="question"><br><br>
+        <label for="">Jawaban Benar</label> <br>
+        <input type="text"  name="answer"><br><br>
+        <label for="">Jawaban Salah</label> <br>
+        <input type="text"  name="answer2"><br><br>
+        <label for="">Jawaban Salah</label> <br>
+        <input type="text"  name="answer3"><br><br>
+        <input type="submit" value="Submit">  
+    </form>
+</body>
+</html>

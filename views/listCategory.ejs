@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/category">Exercise's Categories</a>
+
+    <h1>Category List</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Exercise Category</th>
+                <th>Exercise Duration</th>
+                <th>Exercises Total</th>
+                <th>Teacher Action</th>
+            </tr>
+        </thead>
+        <% data.forEach(el => { %>
+        <tbody>
+            <tr>
+                <td><%= el.type %> </td>
+                <td><%= el.duration %> </td>
+                <td><%= el.Exercises.length %> </td>
+                <td>
+                    <a href="/category/<%= el.id %> ">View Exercise</a>
+                </td>
+            </tr>
+        </tbody>
+        <% }) %>
+    </table>
+
+</body>
+</html>
