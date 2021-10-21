@@ -1,5 +1,7 @@
-const {Student,Exercise,Category,Teacher} = require('../models')
-const bcrypt = require('bcryptjs')
+const {Student,Exercise,Category,Teacher,Sequelize} = require('../models')
+const bcrypt = require('bcryptjs');
+const shuffle = require('../helpers/shuffle')
+const Op = Sequelize.Op;
 
 
 class Controller{
@@ -102,27 +104,108 @@ class Controller{
 
     }
 
-    static listTask(req,res){
-        res.render('landingpagestudent')
-    }
+///BUAT STUDENT
 
-    static listCategory(req,res){
+    static listTask(req,res){
+        // res.render('landingpagestudent')
         Category.findAll({
             include: Exercise
         })
         .then(data => {
-            // res.send(data)
-            res.render('listCategory', {data})
+            res.render('landingpagestudent', {data})
         })
         .catch(err => {
             res.send(err)
         })
     }
 
+    static startExercise(req,res){
+        let categoryId = +req.params.categoryId
+        // res.send(req.params)
+        // console.log(req.params);
+
+        Category.findOne({
+            where: {id: categoryId},
+            include: Exercise
+        })
+        .then(data => {
+            // res.send(data)
+            res.render('startexercise', {data,shuffle})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+    static calcualteAnswer(req,res){
+        let id = +req.params.categoryId
+        // res.send('asuuup')
+        Category.findOne({
+            where: {id: id},
+            include: Exercise
+        })
+        .then(data => {
+            let userScore = 0
+            data.Exercises.forEach(el => {
+                let answer = el.answer
+                let nilai = 100/data.Exercises.length
+                let userAnswer = req.body[el.id]
+                console.log({answer,userAnswer});
+                if(userAnswer == answer){
+                    userScore += nilai
+                }
+            })
+            // console.log(userScore);
+            res.render('scorestudent', {userScore})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+
+///BUAT TEACHER
+    static listCategory(req,res){
+        // console.log(req.query);
+        let type = req.query.type
+
+        if(type){
+            Category.findAll({
+                where:{
+                    [Op.or] : [
+                        Sequelize.where(Sequelize.fn('lower',Sequelize.col('type')),{
+                            [Op.like]: `%${type.toLowerCase()}%`
+                        })
+                    ]
+                },
+                include: Exercise
+            })
+            .then(data => {
+                // res.send(data)
+                res.render('listCategory', {data})
+            })
+            .catch(err => {
+                res.send(err)
+            })
+        }else{
+            Category.findAll({
+                include: Exercise
+            })
+            .then(data => {
+                // res.send(data)
+                res.render('listCategory', {data})
+            })
+            .catch(err => {
+                res.send(err)
+            })
+        }
+       
+    }
+
     static categoryDetail(req,res){
         let CategoryId = +req.params.categoryId
-        // console.log(categoryId);
-        // res.send('masuk detail')
+        let question = req.query.question
+
         Category.findOne({
             where: {id: CategoryId},
             include: Exercise
@@ -134,17 +217,25 @@ class Controller{
         .catch(err => {
             res.send(err)
         })
+        
+        
     }
 
     static addExercise(req,res){
         // console.log(req.params.categoryId);
         let CategoryId = +req.params.categoryId
         Category.findOne({
-            where: {id:CategoryId}
+            where: {id:CategoryId},
+            include: Exercise
         })
         .then(data => {
             // res.send(data)
-            res.render('addForm', {data})
+            console.log(data.Exercises.length);
+            if(data.Exercises.length == 5){
+                res.send('Soal sudah kebanyakan, kasian murid')
+            }else{
+                res.render('addForm', {data})
+            }
         })
         .catch(err => {
             res.send(err)
@@ -167,7 +258,8 @@ class Controller{
             res.redirect(`/category/${CategoryId}`)
         })
         .catch(err => {
-            res.send(err)
+            let newError = err.errors.map(el => el.message)
+            res.send(newError)
         })
     }
 

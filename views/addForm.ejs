@@ -4,23 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <a href="/">Home</a>
-    <a href="/category">Exercise's Categories</a>
-    <h1>Form Add Exercise</h1>
+    <a href="/category">Exercise's Categories </a>
+    <h1>Form Add Exercise <%= data.type %> </h1>
 
     <form action="/category/<%= data.id %> /add" method="post">
-        <label for="">Input soal</label> <br>
-        <input type="text"  name="question"><br><br>
-        <label for="">Jawaban Benar</label> <br>
-        <input type="text"  name="answer"><br><br>
-        <label for="">Jawaban Salah</label> <br>
-        <input type="text"  name="answer2"><br><br>
-        <label for="">Jawaban Salah</label> <br>
-        <input type="text"  name="answer3"><br><br>
-        <input type="submit" value="Submit">  
+        <div class="form-group">
+            <label for="question">Input soal</label> <br>
+            <input type="text" class="form-control" id="formGroupExampleInput"  name="question">
+        </div>
+        <div class="form-group">
+            <label for="">Jawaban Benar</label> <br>
+            <input  type="text" class="form-control" name="answer"><br><br>
+        </div>
+        <div class="form-group">
+            <label for="">Jawaban Salah</label> <br>
+            <input type="text" class="form-control"  name="answer2"><br><br>
+        </div>
+        <div class="form-group">
+            <label for="">Jawaban Salah</label> <br>
+            <input type="text" class="form-control" id="formGroupExampleInput2"  name="answer3"><br><br>
+        </div>
+            <input type="submit" value="Submit">  
+        </div>
     </form>
 </body>
 </html>

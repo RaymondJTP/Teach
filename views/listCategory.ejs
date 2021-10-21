@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <a href="/">Home</a>
-    <a href="/category">Exercise's Categories</a>
+    <a href="/category">Exercise's Categories</a> <br>
     <a href="/logout">Logout</a>
 
     <h1>Category List</h1>
+    <br>
 
-
+    <nav class="navbar navbar-light bg-light">
+        <form action="/category" method="get" class="form-inline">
+            <label for="type">Search Category </label><br>
+            <input class="form-control mr-sm-2" type="text" name="type" placeholder="Search" aria-label="Search"><br>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
     
-    <table border="1">
+    
+    <table class="table">
         <thead>
             <tr>
                 <th>Exercise Category</th>
@@ -28,10 +37,10 @@
         <tbody>
             <tr>
                 <td><%= el.type %> </td>
-                <td><%= el.duration %> </td>
+                <td><%= el.formatDuration() %> </td>
                 <td><%= el.Exercises.length %> </td>
                 <td>
-                    <a href="/category/<%= el.id %> ">View Exercise</a>
+                    <a href="/category/<%= el.id %>" class="btn btn-primary">View Exercise</a>
                 </td>
             </tr>
         </tbody>

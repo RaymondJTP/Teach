@@ -8,5 +8,32 @@
 </head>
 <body>
     <h1>Student Task</h1>
+    <a href="/logout">Logout</a>
+
+
+    <h2>Pick Your Exercise</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Exercise Category</th>
+                <th>Exercise Duration</th>
+                <th>Exercises Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <% data.forEach(el => { %>
+        <tbody>
+            <tr>
+                <td><%= el.type %> </td>
+                <td><%= el.duration %> </td>
+                <td><%= el.Exercises.length %> </td>
+                <td>
+                    <a href="/taskStudent/<%= el.id %> ">Start Exercising!</a>
+                </td>
+            </tr>
+        </tbody>
+        <% }) %>
+    </table>
 </body>
 </html>

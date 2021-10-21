@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+
+const moment = require('moment')
 module.exports = (sequelize, DataTypes) => {
   class Exercise extends Model {
     /**
@@ -14,13 +16,61 @@ module.exports = (sequelize, DataTypes) => {
       Exercise.belongsTo(models.Category)
       
     }
+
+    get formatCreateDate(){
+      return moment(this.createdAt).fromNow()
+    }
+
+    get formatUpdateDate(){
+      return moment(this.updatedAt).fromNow()
+    }
+    
   };
   Exercise.init({
-    question: DataTypes.TEXT,
-    answer: DataTypes.STRING,
-    answer2: DataTypes.STRING,
-    answer3: DataTypes.STRING,
+    question: {
+      type: DataTypes.TEXT,
+      validate : {
+        notEmpty: {
+          msg : 'Please enter the question'
+        }
+      }
+    },
+    answer:{
+      type: DataTypes.STRING,
+      validate : {
+        notEmpty: {
+          msg : 'Please enter the correct answer'
+        }
+      }
+    },
+    answer2: {
+      type: DataTypes.STRING,
+      validate : {
+        notEmpty: {
+          msg : 'Please enter the false answer'
+        }
+      }
+    } ,
+    answer3: {
+      type : DataTypes.STRING,
+      validate : {
+        notEmpty: {
+          msg : 'Please enter the false answer'
+        }
+      }
+    } 
   }, {
+    // hooks: {
+    //   beforeCreate: (instance, options) => {
+    //     console.log('Before');
+    //   },
+    //   afterCreate: (instance, options) => {
+    //     sequelize.models.Category.update({
+    //       duration: duration + 5,
+    //       where: {id : instance.CategoryId}
+    //     })
+    //   }
+    // },
     sequelize,
     modelName: 'Exercise',
   });

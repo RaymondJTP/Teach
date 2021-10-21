@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -13,14 +14,22 @@
     <h1>Edit Form</h1>
 
     <form action="/category/<%= data.Category.id %>/exercise/<%= data.id %> /edit" method="post">
-        <label for="">Input soal</label> <br>
-        <input type="text"  name="question" value="<%= data.question %> "><br><br>
-        <label for="">Jawaban Benar</label> <br>
-        <input type="text"  name="answer" value="<%= data.answer %>"><br><br>
-        <label for="">Jawaban Salah</label> <br>
-        <input type="text"  name="answer2" value="<%= data.answer2 %>"><br><br>
-        <label for="">Jawaban Salah</label> <br>
-        <input type="text"  name="answer3" value="<%= data.answer3 %> "><br><br>
+        <div class="form-group">
+            <label for="">Input soal</label> <br>
+            <input type="text" class="form-control" id="formGroupExampleInput" name="question" value="<%= data.question %> "><br>
+        </div>
+        <div class="form-group">
+            <label for="">Right Answer</label> <br>
+            <input type="text" class="form-control" name="answer" value="<%= data.answer %>"><br>
+        </div>
+        <div class="form-group">
+            <label for="">Wrong Answer</label> <br>
+            <input type="text" class="form-control" name="answer2" value="<%= data.answer2 %>"><br>
+        </div>
+        <div class="form-group">
+            <label for="">Wrong Answer</label> <br>
+            <input type="text" class="form-control" name="answer3" value="<%= data.answer3 %> "><br>
+        </div>
         <input type="submit" value="Edit">  
     </form>
 </body>

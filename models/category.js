@@ -1,4 +1,5 @@
 'use strict';
+const { duration } = require('moment');
 const {
   Model
 } = require('sequelize');
@@ -12,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Category.hasMany(models.Exercise)
       
+    }
+
+    formatDuration(){
+      return `${this.duration} seconds` 
     }
   };
   Category.init({

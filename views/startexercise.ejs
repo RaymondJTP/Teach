@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Start Your Exercise in Category </h1>
+    <h2 id="duration"></h2>
+    <br>
+    <a href="/logout">Logout</a>
+
+
+    <form data-duration='<%= data.duration %> ' id='myForm' action="/taskStudent/<%= data.id %>/calculateAnswer" method="post">
+        <% data.Exercises.forEach(el => { %>
+            <p><%= el.question %> </p>
+            <% shuffle([el.answer, el.answer2, el.answer3]).forEach(element => { %>
+                <input type="radio" name="<%= el.id %>" value="<%= element %>">
+                <label for="<%= el.id %>"><%= element %> </label><br>
+            <% }) %>
+        <% }) %>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script>
+    let duration = document.getElementById('myForm').getAttribute('data-duration')
+    console.log('asuuup',duration);
+    let counter = +duration
+    setTimeout(() => {
+        document.getElementById("myForm").submit();
+    }, duration * 1000);
+    setInterval(() => {
+        document.getElementById("duration").textContent = counter
+        counter--
+    },  1000);
+</script>
+</html>
