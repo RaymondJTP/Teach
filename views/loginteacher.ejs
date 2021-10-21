@@ -1,26 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Login Dulu Gaeees</h1>
+<%- include('partials/header', { title: 'Log in Teacher'}); %>
+    <h1>Hey Teacher, log in!</h1>
 
     <form action="/loginteacher" method="post">
         <div class="form-group">
             <label for="">Username</label>
             <input type="text"  class="form-control"  name="username">
         </div>
-        <div class="forn-group">
+        <div class="form-group">
             <label for="">Password</label> <br>
             <input type="password" class="form-control" name="password"> 
         </div>
         <br><br>
         <input type="submit" class="btn btn-primary" value="Log in!">
     </form>
-</body>
-</html>
+<%- include('partials/footer'); %>

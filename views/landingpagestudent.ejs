@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<%- include('partials/header', { title: 'Student Task'}); %>
+
     <h1>Student Task</h1>
-    <a href="/logout">Logout</a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
 
 
     <h2>Pick Your Exercise</h2>
 
-    <table border="1">
+    <table class="table">
         <thead>
             <tr>
                 <th>Exercise Category</th>
@@ -26,14 +19,13 @@
         <tbody>
             <tr>
                 <td><%= el.type %> </td>
-                <td><%= el.duration %> </td>
+                <td><%= el.formatDuration() %> </td>
                 <td><%= el.Exercises.length %> </td>
                 <td>
-                    <a href="/taskStudent/<%= el.id %> ">Start Exercising!</a>
+                    <a href="/taskStudent/<%= el.id %>" class="btn btn-primary">Start Exercising!</a>
                 </td>
             </tr>
         </tbody>
         <% }) %>
     </table>
-</body>
-</html>
+<%- include('partials/footer'); %>

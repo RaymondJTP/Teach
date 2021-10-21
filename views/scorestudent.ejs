@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/logout">Logout</a>
+<%- include('partials/header', { title: 'Student Score'}); %>
+    <a href="/logout" class="btn btn-danger" style="display: flex; flex-direction: row-reverse;">Logout</a>
 
-    <h1>Your Score</h1>
-    <p>Kamu mendapatkan score <%= userScore %> </p>
+    <h1 style="justify-content: center; text-align: center;">Your Score</h1>
+    <p style="text-align: center;">Kamu mendapatkan score <%= userScore %> </p>
 
     <br>
-    <a href="/taskStudent">Try Another Category!</a>
-</body>
-</html>
+    <a href="/taskStudent" class="btn btn-success" style="display: flex; justify-content: center; text-align: center;">Try Another Category!</a>
+<%- include('partials/footer'); %>
